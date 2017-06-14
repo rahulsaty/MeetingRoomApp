@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">MeetingRoomFinder</string>
+    <string name="loading">loading</string>
+    <string name="selectDate">Select a Date</string>
+    <string name="selectTime">Select a Time</string>
+    <string name="find_room">Find a Room</string>
+    <string name="roomsList">List of Rooms</string>
+    <string name="roomName">Name of Room</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="email">Email</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="reset">Reset</string>
+    <string name="find_rooms">Find Rooms</string>
+    <string name="room_booked_successfully">Room booked successfully</string>
+    <string name="enter_correct_email">Please enter a valid email</string>
+    <string name="book">Book</string>
+    <string name="enter_email">Enter your email</string>
+</resources>

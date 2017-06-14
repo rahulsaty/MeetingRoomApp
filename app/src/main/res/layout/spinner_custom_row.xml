@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_row_container"
+    android:layout_width="@dimen/dimen_200dp"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/custom_row_lyt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/custom_row"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_60dp"
+            android:paddingLeft="@dimen/dimen_20dp"
+            android:gravity="left|center"
+            android:text="@string/selectDate"
+            android:textSize="@dimen/dimen_20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

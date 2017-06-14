@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frag_calender_lyt"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--<TextView
+        android:id="@+id/selectDateTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:gravity="center"
+        android:text="@string/selectDate"
+        android:textSize="@dimen/dimen_20sp"
+        android:textStyle="bold" />-->
+
+    <CalendarView
+        android:id="@+id/calender_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/selectTimeTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/selectTime"
+        android:textSize="@dimen/dimen_20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <Spinner
+            android:id="@+id/fromTimeSpinner"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:layout_weight="1"
+            android:background="@drawable/drop_down_icon"
+            android:dropDownVerticalOffset="@dimen/dimen_60dp"
+            android:dropDownWidth="@dimen/dimen_205dp"
+            android:elevation="0dp"
+            android:popupBackground="@null">
+
+        </Spinner>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="-"
+            android:textSize="@dimen/dimen_20sp" />
+
+        <Spinner
+            android:id="@+id/toTimeSpinner"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:layout_weight="1"
+            android:background="@drawable/drop_down_icon"
+            android:dropDownVerticalOffset="@dimen/dimen_60dp"
+            android:dropDownWidth="@dimen/dimen_205dp"
+            android:elevation="0dp"
+            android:popupBackground="@null">
+
+        </Spinner>
+
+    </LinearLayout>
+
+</LinearLayout>

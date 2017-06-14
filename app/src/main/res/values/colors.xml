@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="color_e79e8f">#e79e8f</color>
+    <color name="color_ededed">#ededed</color>
+    <color name="color_ffffff">#ffffff</color>
+    <color name="color_2e343d">#2e343d</color>
+    <color name="color_6d6e71">#6d6e71</color>
+    <color name="color_8a000000">#8a000000</color>
+    <color name="color_de000000">#de000000</color>
+    <color name="color_a5a6a8">#a5a6a8</color>
+    <color name="color_f1f2f2">#f1f2f2</color>
+    <color name="color_df8b7d">#df8b7d</color>
+    <color name="color_ff4200">#4dff4200</color>
+    <color name="color_ff4200_opaque">#ff4200</color>
+    <color name="transparent">#00000000</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorLoginStepText">#6d6e71</color>
+    <color name="colorNextButtonBackground">#e79e8f</color>
+    <color name="color_d4d4d6">#d4d4d6</color>
+    <color name="color_48d4d4d6">#48d4d4d6</color>
+    <color name="color_f0f0f0">#f0f0f0</color>
+    <color name="color_f7f0ec">#f7f0ec</color>
+    <color name="color_c0a58d">#c0a58d</color>
+    <color name="color_4cc0a58d">#4cc0a58d</color>
+    <color name="color_error_message">#ff4200</color>
+    <color name="color_66ffffff">#66ffffff</color>
+    <color name="color_d0011b">#d0011b</color>
+    <color name="color_e3986d">#e3986d</color>
+    <color name="color_E0C561">#E0C561</color>
+    <color name="color_D65A5B">#D65A5B</color>
+    <color name="color_f7f7f7">#f7f7f7</color>
+</resources>
