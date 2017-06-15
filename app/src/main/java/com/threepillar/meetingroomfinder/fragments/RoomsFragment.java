@@ -29,6 +29,7 @@ import com.threepillar.meetingroomfinder.models.Room;
 import com.threepillar.meetingroomfinder.network.JSONResponse;
 import com.threepillar.meetingroomfinder.network.RequestInterface;
 import com.threepillar.meetingroomfinder.network.RoomDataAdapter;
+import com.threepillar.meetingroomfinder.utils.AppConstants;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -114,13 +115,12 @@ public class RoomsFragment extends BaseFragment {
         roomsRv.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         roomsRv.setLayoutManager(layoutManager);
-        emailEt.setText("a@g.com");
         loadJSON();
     }
 
     private void loadJSON() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.myjson.com")
+                .baseUrl(AppConstants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RequestInterface request = retrofit.create(RequestInterface.class);

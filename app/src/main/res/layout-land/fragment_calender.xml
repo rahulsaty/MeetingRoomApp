@@ -71,7 +71,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="@dimen/dimen_10dp"
                     android:background="@drawable/drop_down_icon"
-                    android:dropDownVerticalOffset="@dimen/dimen_60dp"
+                    android:dropDownVerticalOffset="@dimen/dimen_50dp"
                     android:dropDownWidth="@dimen/dimen_200dp"
                     android:elevation="0dp" />
 
@@ -82,7 +82,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/dimen_10dp"
                     android:background="@drawable/drop_down_icon"
-                    android:dropDownVerticalOffset="@dimen/dimen_60dp"
+                    android:dropDownVerticalOffset="@dimen/dimen_50dp"
                     android:dropDownWidth="@dimen/dimen_200dp"
                     android:elevation="0dp" />
 
