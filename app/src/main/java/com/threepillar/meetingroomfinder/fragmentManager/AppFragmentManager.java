@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.os.Parcelable;
 
 import com.threepillar.meetingroomfinder.base.BaseFragment;
-import com.threepillar.meetingroomfinder.common.utils.LogUtil;
+import com.threepillar.meetingroomfinder.common.util.LogUtil;
 import com.threepillar.meetingroomfinder.enums.FragmentTag;
 import com.threepillar.meetingroomfinder.factory.FragmentFactory;
 

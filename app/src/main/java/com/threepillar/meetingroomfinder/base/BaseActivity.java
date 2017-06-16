@@ -11,8 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.threepillar.meetingroomfinder.R;
-import com.threepillar.meetingroomfinder.common.utils.AppConstants;
-import com.threepillar.meetingroomfinder.common.utils.Utils;
+import com.threepillar.meetingroomfinder.common.util.AppConstants;
+import com.threepillar.meetingroomfinder.common.util.Utils;
 import com.threepillar.meetingroomfinder.enums.FragmentTag;
 import com.threepillar.meetingroomfinder.fragmentManager.AppFragmentManager;
 import com.threepillar.meetingroomfinder.widget.CustomProgressDialog;
@@ -38,7 +38,7 @@ public abstract class BaseActivity extends AppCompatActivity implements OnFragme
             CoordinatorLayout.LayoutParams layoutParams = new
                     CoordinatorLayout.LayoutParams(CoordinatorLayout.LayoutParams.MATCH_PARENT,
                     CoordinatorLayout.LayoutParams.MATCH_PARENT);
-            LayoutInflater inflater = (LayoutInflater) getSystemService(this.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
             View vi = inflater.inflate(getResourceId(), null);
             baseContainerView.addView(vi, layoutParams);
         }

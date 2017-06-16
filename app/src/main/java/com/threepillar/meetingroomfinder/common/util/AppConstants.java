@@ -1,8 +1,12 @@
-package com.threepillar.meetingroomfinder.common.utils;
+package com.threepillar.meetingroomfinder.common.util;
 
 public class AppConstants {
 
     public static final short KEYBOARD_VISIBILITY_DELAY = 150;
+
+    public static final String BASE_URL = "https://api.myjson.com";
+
+    public static final String BASE_URL_ENDPOINT = "bins/197wz7";
 
     public interface Modules {
         String MEETING_ROOM_MODULE = "MEETING_ROOM_MODULE";

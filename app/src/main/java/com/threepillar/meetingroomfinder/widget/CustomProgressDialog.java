@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
-import com.threepillar.meetingroomfinder.common.utils.AppConstants;
+import com.threepillar.meetingroomfinder.common.util.AppConstants;
 
 public class CustomProgressDialog extends DialogFragment {
 

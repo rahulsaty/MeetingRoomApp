@@ -1,23 +1,18 @@
-package com.threepillar.meetingroomfinder.fragments;
+package com.threepillar.meetingroomfinder.fragment;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,11 +20,11 @@ import android.widget.Toast;
 
 import com.threepillar.meetingroomfinder.R;
 import com.threepillar.meetingroomfinder.base.BaseFragment;
-import com.threepillar.meetingroomfinder.models.Room;
+import com.threepillar.meetingroomfinder.common.util.AppConstants;
+import com.threepillar.meetingroomfinder.model.Room;
 import com.threepillar.meetingroomfinder.network.JSONResponse;
 import com.threepillar.meetingroomfinder.network.RequestInterface;
 import com.threepillar.meetingroomfinder.network.RoomDataAdapter;
-import com.threepillar.meetingroomfinder.utils.AppConstants;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -77,8 +72,6 @@ public class RoomsFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         ButterKnife.bind(this, view);
-        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         return view;
     }
 

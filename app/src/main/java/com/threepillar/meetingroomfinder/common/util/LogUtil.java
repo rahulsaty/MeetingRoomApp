@@ -1,4 +1,4 @@
-package com.threepillar.meetingroomfinder.common.utils;
+package com.threepillar.meetingroomfinder.common.util;
 
 import android.util.Log;
 

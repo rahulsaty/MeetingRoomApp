@@ -1,7 +1,6 @@
 package com.threepillar.meetingroomfinder.enums;
 
-import com.threepillar.meetingroomfinder.common.utils.AppConstants;
-import com.threepillar.meetingroomfinder.fragments.RoomsFragment;
+import com.threepillar.meetingroomfinder.common.util.AppConstants;
 
 public enum FragmentTag {
 

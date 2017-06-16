@@ -1,8 +1,4 @@
-package com.threepillar.meetingroomfinder.models;
-
-/**
- * Created by nikhil.mehta on 6/12/2017.
- */
+package com.threepillar.meetingroomfinder.model;
 
 public class Room {
 

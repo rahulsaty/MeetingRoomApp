@@ -6,19 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.threepillar.meetingroomfinder.R;
-import com.threepillar.meetingroomfinder.models.Room;
+import com.threepillar.meetingroomfinder.model.Room;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-/**
- * Created by nikhil.mehta on 6/12/2017.
- */
 
 public class RoomDataAdapter extends RecyclerView.Adapter<RoomDataAdapter.RoomViewHolder> {
     private ArrayList<Room> roomsList;

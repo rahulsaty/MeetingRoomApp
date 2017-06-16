@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.threepillar.meetingroomfinder.common.utils.LogUtil;
+import com.threepillar.meetingroomfinder.common.util.LogUtil;
 import com.threepillar.meetingroomfinder.enums.FragmentTag;
 
 

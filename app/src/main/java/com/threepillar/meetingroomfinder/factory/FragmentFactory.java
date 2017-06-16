@@ -3,7 +3,7 @@ package com.threepillar.meetingroomfinder.factory;
 import android.app.Fragment;
 import android.os.Parcelable;
 
-import com.threepillar.meetingroomfinder.common.utils.AppConstants;
+import com.threepillar.meetingroomfinder.common.util.AppConstants;
 import com.threepillar.meetingroomfinder.enums.FragmentTag;
 
 public class FragmentFactory {

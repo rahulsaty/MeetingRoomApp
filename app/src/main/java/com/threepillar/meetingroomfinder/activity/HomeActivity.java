@@ -1,4 +1,4 @@
-package com.threepillar.meetingroomfinder.activities;
+package com.threepillar.meetingroomfinder.activity;
 
 import android.app.ActivityManager;
 import android.app.Fragment;
@@ -11,7 +11,7 @@ import android.view.WindowManager;
 import com.threepillar.meetingroomfinder.R;
 import com.threepillar.meetingroomfinder.base.BaseActivity;
 import com.threepillar.meetingroomfinder.enums.FragmentTag;
-import com.threepillar.meetingroomfinder.fragments.RoomsFragment;
+import com.threepillar.meetingroomfinder.fragment.RoomsFragment;
 
 public class HomeActivity extends BaseActivity {
 

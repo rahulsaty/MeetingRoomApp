@@ -1,10 +1,6 @@
 package com.threepillar.meetingroomfinder.network;
 
-import com.threepillar.meetingroomfinder.models.Room;
-
-/**
- * Created by nikhil.mehta on 6/12/2017.
- */
+import com.threepillar.meetingroomfinder.model.Room;
 
 public class JSONResponse {
 

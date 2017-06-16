@@ -10,7 +10,7 @@ public abstract class BasePresenter<T extends BaseView> {
 
     protected void attachView(T view){
         this.view = view;
-    };
+    }
 
     public T getView(){
         return view;
@@ -18,7 +18,7 @@ public abstract class BasePresenter<T extends BaseView> {
 
     public  void detachView(){
         view = null;
-    };
+    }
 
     public abstract void initView(String url);
 

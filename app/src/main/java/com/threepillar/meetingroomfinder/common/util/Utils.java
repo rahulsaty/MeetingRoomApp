@@ -1,20 +1,17 @@
-package com.threepillar.meetingroomfinder.common.utils;
+package com.threepillar.meetingroomfinder.common.util;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.FileProvider;
 import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
 import android.text.InputFilter;
 import android.text.TextUtils;
@@ -27,8 +24,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
-import com.threepillar.meetingroomfinder.BuildConfig;
-import com.threepillar.meetingroomfinder.R;
 import com.threepillar.meetingroomfinder.config.AppConfig;
 
 import java.io.File;
@@ -106,9 +101,7 @@ public class Utils {
      * @return
      */
     public static boolean isNotNull(String data) {
-        if (data == null || data.equalsIgnoreCase("") || data.equalsIgnoreCase(" ") || data.equalsIgnoreCase("NA"))
-            return false;
-        return true;
+        return !(data == null || data.equalsIgnoreCase("") || data.equalsIgnoreCase(" ") || data.equalsIgnoreCase("NA"));
     }
 
     /**
@@ -407,9 +400,7 @@ public class Utils {
     public static boolean validateMinimumPasswordDigits(String password) {
         int minLength = 8;
         if (password != null) {
-            if (password.length() < minLength)
-                return false;
-            return true;
+            return password.length() >= minLength;
         }
         return false;
     }
@@ -418,9 +409,7 @@ public class Utils {
     public static boolean validateMaximumPasswordDigits(String password) {
         int maxLength = 35;
         if (password != null) {
-            if (password.length() > maxLength)
-                return true;
-            return false;
+            return password.length() > maxLength;
         }
         return false;
     }
