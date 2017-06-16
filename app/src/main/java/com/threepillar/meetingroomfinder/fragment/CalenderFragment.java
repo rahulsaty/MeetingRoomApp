@@ -76,7 +76,6 @@ public class CalenderFragment extends BaseFragment implements AdapterView.OnItem
                 Log.d("Nikhil", "Selected date: " + daySelected + "/" + monthSelected + "/" + yearSelected);
             }
         });
-       // ((ViewPager)((ViewGroup) calendarView.getChildAt(0)).getChildAt(0)).;
 
         toTimeList = new ArrayList<>();
 
