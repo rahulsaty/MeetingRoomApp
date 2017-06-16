@@ -101,6 +101,15 @@ public class RoomsFragment extends BaseFragment {
 
     private void instantiateDialog() {
         alertDialogBuilder = new AlertDialog.Builder(getActivity());
+        alertDialogBuilder.setTitle(getResources().getString(R.string.room_booked_successfully))
+                .setCancelable(false)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int ids) {
+                        dialog.cancel();
+                        getActivity().getFragmentManager().beginTransaction().replace(R.id.frame_layout,
+                                new CalenderFragment()).commit();
+                    }
+                });
         alertDialog = alertDialogBuilder.create();
     }
 
@@ -172,16 +181,6 @@ public class RoomsFragment extends BaseFragment {
     }
 
     private void showTheDialog() {
-        alertDialogBuilder.setTitle(getResources().getString(R.string.room_booked_successfully))
-                .setCancelable(false)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int ids) {
-                        dialog.cancel();
-                        getActivity().getFragmentManager().beginTransaction().replace(R.id.frame_layout,
-                                new CalenderFragment()).commit();
-                    }
-                });
-        alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
 
