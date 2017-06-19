@@ -17,4 +17,5 @@
     <string name="enter_correct_email">Please enter a valid email</string>
     <string name="book">Book</string>
     <string name="enter_email">Enter your email</string>
+    <string name="enter_room_name">Enter room name</string>
 </resources>

@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.threepillar.meetingroomfinder.R;
@@ -17,12 +18,11 @@ import butterknife.ButterKnife;
 
 public class RoomDataAdapter extends RecyclerView.Adapter<RoomDataAdapter.RoomViewHolder> {
     private ArrayList<Room> roomsList;
-    private Context context;
     private OnItemClickListener onItemClickListener;
+    private int SELECTED_ITEM = -1;
 
-    public RoomDataAdapter(ArrayList<Room> roomsList, Context context) {
+    public RoomDataAdapter(ArrayList<Room> roomsList) {
         this.roomsList = roomsList;
-        this.context = context;
     }
 
     @Override
@@ -32,17 +32,18 @@ public class RoomDataAdapter extends RecyclerView.Adapter<RoomDataAdapter.RoomVi
     }
 
     @Override
-    public void onBindViewHolder(final RoomViewHolder holder, int position) {
-        holder.labelTv.setText(roomsList.get(position).getRoomName());
-//        holder.headingTv.setText(roomsList.get(position).getHeading());
-//        holder.subHeadingTv.setText(roomsList.get(position).getSub_heading());
+    public void onBindViewHolder(final RoomViewHolder holder, final int position) {
+        holder.rbtn_room_name.setText(roomsList.get(position).getRoomName());
+        holder.rbtn_room_name.setChecked(position == SELECTED_ITEM);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(v.getContext(), ""+holder.labelTv.getText(), Toast.LENGTH_SHORT).show();
+                SELECTED_ITEM = holder.getAdapterPosition();
                 if (onItemClickListener != null) {
-                    onItemClickListener.onItemClick(holder.getAdapterPosition(), String.valueOf(holder.labelTv.getText()));
+                    onItemClickListener.onItemClick(holder.getAdapterPosition(),
+                            SELECTED_ITEM > -1 ? String.valueOf(holder.rbtn_room_name.getText()) : null);
                 }
+                notifyDataSetChanged();
             }
         });
     }
@@ -58,12 +59,8 @@ public class RoomDataAdapter extends RecyclerView.Adapter<RoomDataAdapter.RoomVi
 
     public class RoomViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.label_tv)
-        TextView labelTv;
-//        @BindView(R.id.heading_tv)
-//        TextView headingTv;
-//        @BindView(R.id.sub_heading_tv)
-//        TextView subHeadingTv;
+        @BindView(R.id.rbtn_room_name)
+        RadioButton rbtn_room_name;
 
         public RoomViewHolder(View itemView) {
             super(itemView);

@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -220,16 +221,16 @@ public class SetupActivity extends BaseActivity implements EasyPermissions.Permi
         if (Utils.isNotNull(appPrefrence.getRoomType())) {
             addRoomsFragement(appPrefrence.getRoomType());
         } else {
-            // custom dialog
             final Dialog dialog = new Dialog(context);
             dialog.setContentView(R.layout.name_unnamed_dialog);
             dialog.setTitle("Title...");
 
-            RadioGroup radioGroup = (RadioGroup) dialog.findViewById(R.id.radiogroup);
-            radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            final RadioGroup radioGroup = (RadioGroup) dialog.findViewById(R.id.radiogroup);
+            Button btn_ok = (Button) dialog.findViewById(R.id.btn_ok);
+            btn_ok.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-
+                public void onClick(View v) {
+                    int checkedId = radioGroup.getCheckedRadioButtonId();
                     if (checkedId == R.id.rbtn_named) {
                         addRoomsFragement(AppConstants.NAMED_ROOM);
                         dialog.dismiss();
@@ -239,7 +240,6 @@ public class SetupActivity extends BaseActivity implements EasyPermissions.Permi
                     }
                 }
             });
-
             dialog.show();
         }
 

@@ -16,6 +16,7 @@ public class AppPrefrence {
     private final String PREF_NAME = "mypref";
     private final String ACCOUNT_NAME = "PREF_ACCOUNT_NAME";
     private final String ROOM_TYPE = "PREF_ROOM_TYPE";
+    private final String ROOM_NAME = "PREF_ROOM_NAME";
 
     public AppPrefrence(Context context) {
         this.ctx = context;
@@ -42,5 +43,13 @@ public class AppPrefrence {
         editor.commit();
     }
 
+    public String getRoomName() {
+        return preferences.getString(ROOM_NAME, null);
+    }
 
+
+    public void setRoomName(String value) {
+        editor.putString(ROOM_NAME, value);
+        editor.commit();
+    }
 }

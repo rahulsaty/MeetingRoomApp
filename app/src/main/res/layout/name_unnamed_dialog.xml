@@ -9,19 +9,20 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="2"
+        android:layout_weight="1.5"
         android:paddingLeft="@dimen/dimen_30dp"
         android:paddingTop="@dimen/dimen_30dp"
-        android:textSize="@dimen/dimen_18sp"
-        android:text="Select room type.." />
+        android:text="Select room type.."
+        android:textSize="@dimen/dimen_18sp" />
 
     <RadioGroup
+        android:id="@+id/radiogroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="center_vertical"
         android:layout_weight="3"
-        android:id="@+id/radiogroup"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dimen_30dp">
 
         <RadioButton
             android:id="@+id/rbtn_named"
@@ -38,5 +39,14 @@
             android:paddingLeft="@dimen/dimen_10dp"
             android:text="UnNamed Room" />
     </RadioGroup>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:id="@+id/btn_ok"
+        android:layout_marginBottom="@dimen/dimen_15dp"
+        android:layout_marginRight="@dimen/dimen_15dp"
+        android:text="OK" />
 
 </LinearLayout>

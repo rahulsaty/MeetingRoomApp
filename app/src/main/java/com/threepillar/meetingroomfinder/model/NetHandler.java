@@ -40,7 +40,6 @@ public class NetHandler {
     public synchronized ArrayList<Room> fetchAllRooms(Context context) {
         ArrayList<Room> roomList = new ArrayList<>();
         try {
-            System.out.println("=========here 1==");
             CalendarList calendarList = NetworkUtill.getGoogleCalenderInstance(context).calendarList().list().execute();
             System.out.println("===========" + calendarList.getItems().toString());
             if (calendarList != null && calendarList.getItems().size() > 0) {
@@ -51,12 +50,9 @@ public class NetHandler {
                 roomList.addAll(roomDatas);
             }
         } catch (IOException e) {
-            System.out.println("=========here 2=="+e);
             e.printStackTrace();
         }
-
         return roomList;
-
     }
 
 
@@ -80,9 +76,7 @@ public class NetHandler {
         try {
             FreeBusyResponse response = NetworkUtill.getGoogleCalenderInstance(context)
                     .freebusy().query(createFreeBusyRequest(list, startTime, endTime)).execute();
-
             Set keyset = response.getCalendars().entrySet();
-
             Iterator iterator = keyset.iterator();
             while (iterator.hasNext()) {
                 FreeBusyCalendar freeBusyCalendar = (FreeBusyCalendar) iterator.next();
@@ -90,13 +84,9 @@ public class NetHandler {
                     iterator.remove();
                 }
             }
-
-//            System.out.println("==============" + keyset.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     private FreeBusyRequest createFreeBusyRequest(ArrayList<Room> list, long startTime, long endTime) {
@@ -147,10 +137,6 @@ public class NetHandler {
         if (event == null || mailIdList == null || mailIdList.size() <= 0)
             return;
 
-//        EventAttendee[] attendees = new EventAttendee[]{
-//                new EventAttendee().setEmail("rahul.pandey@3pillarglobal.com")
-////                ,new EventAttendee().setEmail("sbrin@example.com"),
-//        };
         ArrayList<EventAttendee> list = new ArrayList<>();
         for (int i = 0; i < mailIdList.size(); i++) {
             if (NetworkUtill.isNotNull(mailIdList.get(i))) {
@@ -158,7 +144,6 @@ public class NetHandler {
                 eventAttendee.setEmail(mailIdList.get(i));
                 list.add(eventAttendee);
             }
-//            event.setAttendees(Arrays.asList(attendees));
             event.setAttendees(list);
         }
     }
@@ -175,6 +160,4 @@ public class NetHandler {
                 .setOverrides(Arrays.asList(reminderOverrides));
         event.setReminders(reminders);
     }
-
-
 }
