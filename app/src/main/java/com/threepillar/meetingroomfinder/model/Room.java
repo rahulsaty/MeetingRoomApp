@@ -2,19 +2,23 @@ package com.threepillar.meetingroomfinder.model;
 
 public class Room {
 
-    private String room_label;
-    private String heading;
-    private String sub_heading;
+    private String roomID;
+    private String roomName;
 
-    public String getRoom_label() {
-        return room_label;
+    public String getRoomID() {
+        return roomID;
     }
 
-    public String getHeading() {
-        return heading;
+    public String getRoomName() {
+        return roomName;
     }
 
-    public String getSub_heading() {
-        return sub_heading;
+    public void setRoomID(String roomID) {
+        this.roomID = roomID;
     }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+
 }

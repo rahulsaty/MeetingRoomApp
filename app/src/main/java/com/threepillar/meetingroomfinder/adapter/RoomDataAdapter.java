@@ -1,4 +1,4 @@
-package com.threepillar.meetingroomfinder.network;
+package com.threepillar.meetingroomfinder.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -33,9 +33,9 @@ public class RoomDataAdapter extends RecyclerView.Adapter<RoomDataAdapter.RoomVi
 
     @Override
     public void onBindViewHolder(final RoomViewHolder holder, int position) {
-        holder.labelTv.setText(roomsList.get(position).getRoom_label());
-        holder.headingTv.setText(roomsList.get(position).getHeading());
-        holder.subHeadingTv.setText(roomsList.get(position).getSub_heading());
+        holder.labelTv.setText(roomsList.get(position).getRoomName());
+//        holder.headingTv.setText(roomsList.get(position).getHeading());
+//        holder.subHeadingTv.setText(roomsList.get(position).getSub_heading());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,10 +60,10 @@ public class RoomDataAdapter extends RecyclerView.Adapter<RoomDataAdapter.RoomVi
 
         @BindView(R.id.label_tv)
         TextView labelTv;
-        @BindView(R.id.heading_tv)
-        TextView headingTv;
-        @BindView(R.id.sub_heading_tv)
-        TextView subHeadingTv;
+//        @BindView(R.id.heading_tv)
+//        TextView headingTv;
+//        @BindView(R.id.sub_heading_tv)
+//        TextView subHeadingTv;
 
         public RoomViewHolder(View itemView) {
             super(itemView);
