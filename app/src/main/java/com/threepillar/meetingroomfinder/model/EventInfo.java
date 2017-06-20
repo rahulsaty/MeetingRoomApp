@@ -1,23 +1,34 @@
 package com.threepillar.meetingroomfinder.model;
 
+import java.util.Date;
+
 public class EventInfo {
 
-    private String eventTitle;
-    private String personEmail;
+    private Date dateEvent;
+    private String titleEvent;
+    private String emailEvent;
 
-    public String getEventTitle() {
-        return eventTitle;
+    public Date getDateEvent() {
+        return dateEvent;
     }
 
-    public void setEventTitle(String eventTitle) {
-        this.eventTitle = eventTitle;
+    public void setDateEvent(Date dateEvent) {
+        this.dateEvent = dateEvent;
     }
 
-    public String getPersonEmail() {
-        return personEmail;
+    public String getTitleEvent() {
+        return titleEvent;
     }
 
-    public void setPersonEmail(String personEmail) {
-        this.personEmail = personEmail;
+    public void setTitleEvent(String titleEvent) {
+        this.titleEvent = titleEvent;
+    }
+
+    public String getEmailEvent() {
+        return emailEvent;
+    }
+
+    public void setEmailEvent(String emailEvent) {
+        this.emailEvent = emailEvent;
     }
 }

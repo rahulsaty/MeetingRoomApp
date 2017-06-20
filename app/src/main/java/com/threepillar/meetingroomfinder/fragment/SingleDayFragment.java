@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -45,8 +46,8 @@ public class SingleDayFragment extends BaseFragment {
     public static final SimpleDateFormat TIME_FORMAT = new SimpleDateFormat("hh:mm a");
     public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
 
-    @BindView(R.id.dateTv)
-    TextView dateTv;
+    //    @BindView(R.id.dateTv)
+//    TextView dateTv;
     @BindView(R.id.unmarked_rooms_rv)
     RecyclerView unmarkedRoomsRv;
     @BindView(R.id.fab)
@@ -64,6 +65,13 @@ public class SingleDayFragment extends BaseFragment {
         ButterKnife.bind(this, view);
         Log.d(AppConstants.APP_NAME, "onCreateView() called");
         init();
+        CustomDialogClass customDialog = new CustomDialogClass(getActivity());
+        customDialog.setOnMyDialogResult(new CustomDialogClass.onMyDialogResult() {
+            @Override
+            public void finish(String title, String email) {
+                Toast.makeText(getActivity(), "title=" + title + ", email= " + email, Toast.LENGTH_SHORT).show();
+            }
+        });
         return view;
     }
 
@@ -79,6 +87,7 @@ public class SingleDayFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
         Log.d(AppConstants.APP_NAME, "onActivityCreated() called");
         calculateTime();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(todayDateStr);
         adapter = new SingleDayAdapter(dates, getActivity());
         adapter.setOnSingleItemClickListener(new SingleDayAdapter.OnSingleItemClickListener() {
             @Override
@@ -111,7 +120,7 @@ public class SingleDayFragment extends BaseFragment {
 
             calendar = Calendar.getInstance();
             todayDateStr = "Today is " + DATE_FORMAT.format(calendar.getTime());
-            dateTv.setText(todayDateStr);
+//            dateTv.setText(todayDateStr);
             calendar.set(Calendar.HOUR_OF_DAY, hour);
             calendar.set(Calendar.MINUTE, minutes);
 

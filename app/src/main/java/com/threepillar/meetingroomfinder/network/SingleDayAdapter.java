@@ -3,6 +3,7 @@ package com.threepillar.meetingroomfinder.network;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.threepillar.meetingroomfinder.R;
+import com.threepillar.meetingroomfinder.common.util.AppConstants;
 import com.threepillar.meetingroomfinder.fragment.SingleDayFragment;
 
 import java.util.Date;
@@ -36,6 +38,7 @@ public class SingleDayAdapter extends RecyclerView.Adapter<SingleDayAdapter.Sing
 
     @Override
     public SingleDayViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Log.d(AppConstants.APP_NAME, "onCreateViewHolder()");
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.unmarked_rooms_single_row, parent, false);
         return new SingleDayAdapter.SingleDayViewHolder(v);
     }
@@ -43,16 +46,20 @@ public class SingleDayAdapter extends RecyclerView.Adapter<SingleDayAdapter.Sing
     @Override
     public void onBindViewHolder(final SingleDayViewHolder holder, final int position) {
 
+        Log.d(AppConstants.APP_NAME, "onBindViewHolder()");
+
         if (selectedPositions.contains(position)) {
             holder.itemView.setBackgroundColor(Color.BLUE);
         } else {
             holder.itemView.setBackgroundColor(Color.WHITE);
         }
 
-//        holder.titleTv.setText(eventList.get(position).getEventTitle());
-//        holder.emailTv.setText(eventList.get(position).getPersonEmail());
+//        holder.titleTv.setText(eventList.get(position).getTitleEvent());
+//        holder.emailTv.setText(eventList.get(position).getEmailEvent());
 
         holder.timeTv.setText(SingleDayFragment.TIME_FORMAT.format(dates.get(position)));
+        holder.titleTv.setText("");
+        holder.emailTv.setText("");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,12 +106,12 @@ public class SingleDayAdapter extends RecyclerView.Adapter<SingleDayAdapter.Sing
 
     public class SingleDayViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.timeTv)
+        @BindView(R.id.time_tv)
         TextView timeTv;
-//        @BindView(R.id.titleTv)
-//        TextView titleTv;
-//        @BindView(R.id.emailTv)
-//        TextView emailTv;
+        @BindView(R.id.title_tv)
+        TextView titleTv;
+        @BindView(R.id.email_tv)
+        TextView emailTv;
 
         public SingleDayViewHolder(View itemView) {
             super(itemView);

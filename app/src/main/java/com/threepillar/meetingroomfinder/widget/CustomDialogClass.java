@@ -14,10 +14,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class CustomDialogClass extends Dialog  {
+public class CustomDialogClass extends Dialog {
 
     public Activity c;
     public Dialog d;
+
+    public onMyDialogResult onMyDialogResult;
 
     @BindView(R.id.title_meeting)
     EditText titleEt;
@@ -43,11 +45,23 @@ public class CustomDialogClass extends Dialog  {
 
     @OnClick(R.id.add_btn)
     public void addBtnClicked() {
-
+        if (onMyDialogResult != null) {
+            onMyDialogResult.finish(String.valueOf(titleEt.getText()), String.valueOf(emailEt.getText()));
+            dismiss();
+        }
     }
 
     @OnClick(R.id.cancel_btn)
     public void cancelBtnClicked() {
         dismiss();
     }
+
+    public void setOnMyDialogResult(CustomDialogClass.onMyDialogResult onMyDialogResult) {
+        this.onMyDialogResult = onMyDialogResult;
+    }
+
+    public interface onMyDialogResult {
+        void finish(String title, String email);
+    }
+
 }
