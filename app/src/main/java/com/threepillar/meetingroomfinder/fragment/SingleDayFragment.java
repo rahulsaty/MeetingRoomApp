@@ -32,14 +32,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SingleDayFragment extends BaseFragment {
-    private ArrayList<EventInfo> eventList;
     private SingleDayAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private Calendar calendar;
     private int minutes, hour, newRvPosition;
     private static final int SECONDS_IN_A_DAY = 24 * 60 * 60;
     private static final int THIRTY_MINUTES = 30 * 60;
-    List<Date> dates = null;
+//    List<Date> dates = null;
+    ArrayList<EventInfo> eventList;
     private String todayDateStr;
     private int rvPosition = 0;
 
@@ -65,18 +65,12 @@ public class SingleDayFragment extends BaseFragment {
         ButterKnife.bind(this, view);
         Log.d(AppConstants.APP_NAME, "onCreateView() called");
         init();
-        CustomDialogClass customDialog = new CustomDialogClass(getActivity());
-        customDialog.setOnMyDialogResult(new CustomDialogClass.onMyDialogResult() {
-            @Override
-            public void finish(String title, String email) {
-                Toast.makeText(getActivity(), "title=" + title + ", email= " + email, Toast.LENGTH_SHORT).show();
-            }
-        });
         return view;
     }
 
     private void init() {
-        dates = new ArrayList<>();
+//        dates = new ArrayList<>();
+        eventList = new ArrayList<>();
         unmarkedRoomsRv.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
         unmarkedRoomsRv.setLayoutManager(layoutManager);
@@ -88,7 +82,8 @@ public class SingleDayFragment extends BaseFragment {
         Log.d(AppConstants.APP_NAME, "onActivityCreated() called");
         calculateTime();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(todayDateStr);
-        adapter = new SingleDayAdapter(dates, getActivity());
+//        adapter = new SingleDayAdapter(dates, getActivity());
+        adapter = new SingleDayAdapter(eventList, getActivity());
         adapter.setOnSingleItemClickListener(new SingleDayAdapter.OnSingleItemClickListener() {
             @Override
             public void onSingleItemClick(int position, Set<Integer> selectedPositions) {
@@ -124,8 +119,12 @@ public class SingleDayFragment extends BaseFragment {
             calendar.set(Calendar.HOUR_OF_DAY, hour);
             calendar.set(Calendar.MINUTE, minutes);
 
-            dates.add(calendar.getTime());
+//            dates.add(calendar.getTime());
+            EventInfo eventInfo= new EventInfo();
+            eventInfo.setDateEvent(calendar.getTime());
+            eventList.add(eventInfo);
         }
+
     }
 
     private void calculateRvPosition() {

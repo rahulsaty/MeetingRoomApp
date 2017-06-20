@@ -3,7 +3,6 @@ package com.threepillar.meetingroomfinder.widget;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,10 +15,8 @@ import butterknife.OnClick;
 
 public class CustomDialogClass extends Dialog {
 
-    public Activity c;
-    public Dialog d;
-
-    public onMyDialogResult onMyDialogResult;
+    public Activity activity;
+//    public Dialog d;
 
     @BindView(R.id.title_meeting)
     EditText titleEt;
@@ -30,9 +27,9 @@ public class CustomDialogClass extends Dialog {
     @BindView(R.id.cancel_btn)
     Button cancelBtn;
 
-    public CustomDialogClass(Activity a) {
-        super(a);
-        this.c = a;
+    public CustomDialogClass(Activity activity) {
+        super(activity);
+        this.activity = activity;
     }
 
     @Override
@@ -45,23 +42,11 @@ public class CustomDialogClass extends Dialog {
 
     @OnClick(R.id.add_btn)
     public void addBtnClicked() {
-        if (onMyDialogResult != null) {
-            onMyDialogResult.finish(String.valueOf(titleEt.getText()), String.valueOf(emailEt.getText()));
-            dismiss();
-        }
     }
 
     @OnClick(R.id.cancel_btn)
     public void cancelBtnClicked() {
         dismiss();
-    }
-
-    public void setOnMyDialogResult(CustomDialogClass.onMyDialogResult onMyDialogResult) {
-        this.onMyDialogResult = onMyDialogResult;
-    }
-
-    public interface onMyDialogResult {
-        void finish(String title, String email);
     }
 
 }

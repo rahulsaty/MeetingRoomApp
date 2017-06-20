@@ -13,7 +13,9 @@ import android.widget.Toast;
 import com.threepillar.meetingroomfinder.R;
 import com.threepillar.meetingroomfinder.common.util.AppConstants;
 import com.threepillar.meetingroomfinder.fragment.SingleDayFragment;
+import com.threepillar.meetingroomfinder.model.EventInfo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -24,21 +26,21 @@ import butterknife.ButterKnife;
 
 public class SingleDayAdapter extends RecyclerView.Adapter<SingleDayAdapter.SingleDayViewHolder> {
 
-    //    private ArrayList<EventInfo> eventList;
-    List<Date> dates = null;
+    private ArrayList<EventInfo> eventList;
+    //    List<Date> dates = null;
     private Set<Integer> selectedPositions = new HashSet<>();
     private Context context;
 
     private OnSingleItemClickListener onSingleItemClickListener;
 
-    public SingleDayAdapter(List<Date> dates, Context context) {
-        this.dates = dates;
+    public SingleDayAdapter(/*List<Date> dates*/ ArrayList<EventInfo> eventList, Context context) {
+//        this.dates = dates;
+        this.eventList = eventList;
         this.context = context;
     }
 
     @Override
     public SingleDayViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Log.d(AppConstants.APP_NAME, "onCreateViewHolder()");
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.unmarked_rooms_single_row, parent, false);
         return new SingleDayAdapter.SingleDayViewHolder(v);
     }
@@ -46,18 +48,14 @@ public class SingleDayAdapter extends RecyclerView.Adapter<SingleDayAdapter.Sing
     @Override
     public void onBindViewHolder(final SingleDayViewHolder holder, final int position) {
 
-        Log.d(AppConstants.APP_NAME, "onBindViewHolder()");
-
         if (selectedPositions.contains(position)) {
             holder.itemView.setBackgroundColor(Color.BLUE);
         } else {
             holder.itemView.setBackgroundColor(Color.WHITE);
         }
 
-//        holder.titleTv.setText(eventList.get(position).getTitleEvent());
-//        holder.emailTv.setText(eventList.get(position).getEmailEvent());
-
-        holder.timeTv.setText(SingleDayFragment.TIME_FORMAT.format(dates.get(position)));
+//        holder.timeTv.setText(SingleDayFragment.TIME_FORMAT.format(dates.get(position)));
+        holder.timeTv.setText(SingleDayFragment.TIME_FORMAT.format(eventList.get(position).getDateEvent()));
         holder.titleTv.setText("");
         holder.emailTv.setText("");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +86,7 @@ public class SingleDayAdapter extends RecyclerView.Adapter<SingleDayAdapter.Sing
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Toast.makeText(context, ""+position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "" + position, Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
@@ -96,8 +94,8 @@ public class SingleDayAdapter extends RecyclerView.Adapter<SingleDayAdapter.Sing
 
     @Override
     public int getItemCount() {
-//        return eventList.size();
-        return dates.size();
+        return eventList.size();
+//        return dates.size();
     }
 
     public void setOnSingleItemClickListener(OnSingleItemClickListener onSingleItemClickListener) {
