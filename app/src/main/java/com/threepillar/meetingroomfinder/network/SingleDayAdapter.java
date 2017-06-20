@@ -3,7 +3,6 @@ package com.threepillar.meetingroomfinder.network;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.threepillar.meetingroomfinder.R;
-import com.threepillar.meetingroomfinder.common.util.AppConstants;
 import com.threepillar.meetingroomfinder.fragment.SingleDayFragment;
 import com.threepillar.meetingroomfinder.model.EventInfo;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
 import butterknife.BindView;
@@ -43,7 +38,7 @@ public class SingleDayAdapter extends RecyclerView.Adapter<SingleDayAdapter.Sing
     public void addEventsList(ArrayList<EventInfo> eventList) {
 
         if (this.eventList == null) {
-            this.eventList = new ArrayList();
+            this.eventList = new ArrayList<>();
         }
         this.eventList.addAll(eventList);
         notifyDataSetChanged();
@@ -52,7 +47,7 @@ public class SingleDayAdapter extends RecyclerView.Adapter<SingleDayAdapter.Sing
     public void addEvent(EventInfo eventInfo) {
 
         if (eventList == null) {
-            this.eventList = new ArrayList();
+            this.eventList = new ArrayList<>();
         }
         this.eventList.add(eventInfo);
         notifyDataSetChanged();
