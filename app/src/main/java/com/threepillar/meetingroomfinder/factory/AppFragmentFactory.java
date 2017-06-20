@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import com.threepillar.meetingroomfinder.enums.FragmentTag;
 import com.threepillar.meetingroomfinder.fragment.CalenderFragment;
 import com.threepillar.meetingroomfinder.fragment.RoomsFragment;
+import com.threepillar.meetingroomfinder.fragment.SingleDayFragment;
 
 public class AppFragmentFactory {
 
@@ -20,6 +21,9 @@ public class AppFragmentFactory {
                 break;
             case RoomsFragment:
                 fragment = RoomsFragment.newInstance(fragArgs);
+                break;
+            case SingleDayFragment:
+                fragment = SingleDayFragment.newInstance(fragArgs);
                 break;
         }
         return fragment;

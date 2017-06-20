@@ -6,7 +6,8 @@ public enum FragmentTag {
 
     //meeting room fragments
     CalenderFragment(AppConstants.Modules.MEETING_ROOM_MODULE),
-    RoomsFragment(AppConstants.Modules.MEETING_ROOM_MODULE);
+    RoomsFragment(AppConstants.Modules.MEETING_ROOM_MODULE),
+    SingleDayFragment(AppConstants.Modules.MEETING_ROOM_MODULE);
 
     // for further module fragments please specify here.
 

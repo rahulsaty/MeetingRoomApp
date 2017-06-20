@@ -21,7 +21,8 @@ public class HomeActivity extends BaseActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-        showFragment(FragmentTag.CalenderFragment, null, true);
+//        showFragment(FragmentTag.CalenderFragment, null, true);
+        showFragment(FragmentTag.SingleDayFragment, null, true);
     }
 
     @Override

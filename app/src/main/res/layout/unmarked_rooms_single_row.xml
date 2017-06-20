@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/timeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:hint="Time" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="@dimen/dimen_2dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:layout_marginLeft="@dimen/dimen_5dp"
+            android:layout_toRightOf="@id/timeTv"
+            android:background="@color/color_000000" />
+
+        <LinearLayout
+            android:id="@+id/titleEmailLyt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_toRightOf="@id/divider"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Title"
+                android:textSize="@dimen/dimen_18sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/email_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_2dp"
+            android:layout_below="@id/titleEmailLyt"
+            android:background="@color/color_000000" />
+
+    </RelativeLayout>
+</RelativeLayout>

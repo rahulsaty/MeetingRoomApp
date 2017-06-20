@@ -2,6 +2,8 @@ package com.threepillar.meetingroomfinder.common.util;
 
 public class AppConstants {
 
+    public static final String APP_NAME = "MeetingRoomApp";
+
     public static final short KEYBOARD_VISIBILITY_DELAY = 150;
 
     public static final String BASE_URL = "https://api.myjson.com";

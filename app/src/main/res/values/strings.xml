@@ -17,4 +17,7 @@
     <string name="enter_correct_email">Please enter a valid email</string>
     <string name="book">Book</string>
     <string name="enter_email">Enter your email</string>
+    <string name="date">Date</string>
+    <string name="meeting_title">Title e.g. Discussion with John and team</string>
+    <string name="add">Add</string>
 </resources>
