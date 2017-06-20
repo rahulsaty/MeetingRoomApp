@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.threepillar.meetingroomfinder.R;
@@ -24,8 +23,6 @@ import com.threepillar.meetingroomfinder.widget.CustomDialogClass;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 import butterknife.BindView;
@@ -38,7 +35,7 @@ public class SingleDayFragment extends BaseFragment {
     private int minutes, hour, newRvPosition;
     private static final int SECONDS_IN_A_DAY = 24 * 60 * 60;
     private static final int THIRTY_MINUTES = 30 * 60;
-//    List<Date> dates = null;
+    //    List<Date> dates = null;
     ArrayList<EventInfo> eventList;
     private String todayDateStr;
     private int rvPosition = 0;
@@ -52,6 +49,7 @@ public class SingleDayFragment extends BaseFragment {
     RecyclerView unmarkedRoomsRv;
     @BindView(R.id.fab)
     FloatingActionButton fab;
+    private CustomDialogClass customDialog;
 
     public static SingleDayFragment newInstance(Parcelable fragArgs) {
         SingleDayFragment singleDayFragment = new SingleDayFragment();
@@ -65,12 +63,19 @@ public class SingleDayFragment extends BaseFragment {
         ButterKnife.bind(this, view);
         Log.d(AppConstants.APP_NAME, "onCreateView() called");
         init();
+        customDialog.setOnAddBtnClickListener(new CustomDialogClass.OnAddBtnClickListener() {
+            @Override
+            public void onAddBtnClick(String title, String email) {
+                Toast.makeText(getActivity(), "title=" + title + " ,email= " + email, Toast.LENGTH_SHORT).show();
+            }
+        });
         return view;
     }
 
     private void init() {
 //        dates = new ArrayList<>();
         eventList = new ArrayList<>();
+        customDialog = new CustomDialogClass(getActivity());
         unmarkedRoomsRv.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
         unmarkedRoomsRv.setLayoutManager(layoutManager);
@@ -102,7 +107,6 @@ public class SingleDayFragment extends BaseFragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomDialogClass customDialog = new CustomDialogClass(getActivity());
                 customDialog.show();
             }
         });
@@ -120,7 +124,7 @@ public class SingleDayFragment extends BaseFragment {
             calendar.set(Calendar.MINUTE, minutes);
 
 //            dates.add(calendar.getTime());
-            EventInfo eventInfo= new EventInfo();
+            EventInfo eventInfo = new EventInfo();
             eventInfo.setDateEvent(calendar.getTime());
             eventList.add(eventInfo);
         }

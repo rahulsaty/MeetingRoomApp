@@ -16,7 +16,8 @@ import butterknife.OnClick;
 public class CustomDialogClass extends Dialog {
 
     public Activity activity;
-//    public Dialog d;
+    //    public Dialog d;
+    public OnAddBtnClickListener mOnAddBtnClickListener;
 
     @BindView(R.id.title_meeting)
     EditText titleEt;
@@ -42,6 +43,10 @@ public class CustomDialogClass extends Dialog {
 
     @OnClick(R.id.add_btn)
     public void addBtnClicked() {
+        if (mOnAddBtnClickListener != null) {
+            mOnAddBtnClickListener.onAddBtnClick(titleEt.getText().toString(), emailEt.getText().toString());
+            dismiss();
+        }
     }
 
     @OnClick(R.id.cancel_btn)
@@ -49,4 +54,11 @@ public class CustomDialogClass extends Dialog {
         dismiss();
     }
 
+    public interface OnAddBtnClickListener {
+        void onAddBtnClick(String title, String email);
+    }
+
+    public void setOnAddBtnClickListener(OnAddBtnClickListener mOnAddBtnClickListener) {
+        this.mOnAddBtnClickListener = mOnAddBtnClickListener;
+    }
 }

@@ -98,10 +98,6 @@ public class SingleDayAdapter extends RecyclerView.Adapter<SingleDayAdapter.Sing
 //        return dates.size();
     }
 
-    public void setOnSingleItemClickListener(OnSingleItemClickListener onSingleItemClickListener) {
-        this.onSingleItemClickListener = onSingleItemClickListener;
-    }
-
     public class SingleDayViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.time_tv)
@@ -119,6 +115,10 @@ public class SingleDayAdapter extends RecyclerView.Adapter<SingleDayAdapter.Sing
 
     public interface OnSingleItemClickListener {
         void onSingleItemClick(int position, Set<Integer> selectedPositions);
+    }
+
+    public void setOnSingleItemClickListener(OnSingleItemClickListener onSingleItemClickListener) {
+        this.onSingleItemClickListener = onSingleItemClickListener;
     }
 
 }
