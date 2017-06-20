@@ -36,7 +36,7 @@ public class SingleDayFragment extends BaseFragment {
     private static final int SECONDS_IN_A_DAY = 24 * 60 * 60;
     private static final int THIRTY_MINUTES = 30 * 60;
     //    List<Date> dates = null;
-    ArrayList<EventInfo> eventList;
+//    ArrayList<EventInfo> eventList;
     private String todayDateStr;
     private int rvPosition = 0;
 
@@ -61,12 +61,15 @@ public class SingleDayFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         ButterKnife.bind(this, view);
-        Log.d(AppConstants.APP_NAME, "onCreateView() called");
         init();
         customDialog.setOnAddBtnClickListener(new CustomDialogClass.OnAddBtnClickListener() {
             @Override
             public void onAddBtnClick(String title, String email) {
-                Toast.makeText(getActivity(), "title=" + title + " ,email= " + email, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "title=" + title + " ,email= " + email, Toast.LENGTH_SHORT).show();
+                EventInfo eventInfo = new EventInfo();
+                eventInfo.setTitleEvent(title);
+                eventInfo.setEmailEvent(email);
+                adapter.updateMultipleEvents(eventInfo);
             }
         });
         return view;
@@ -74,7 +77,6 @@ public class SingleDayFragment extends BaseFragment {
 
     private void init() {
 //        dates = new ArrayList<>();
-        eventList = new ArrayList<>();
         customDialog = new CustomDialogClass(getActivity());
         unmarkedRoomsRv.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
@@ -84,11 +86,8 @@ public class SingleDayFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.d(AppConstants.APP_NAME, "onActivityCreated() called");
-        calculateTime();
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(todayDateStr);
 //        adapter = new SingleDayAdapter(dates, getActivity());
-        adapter = new SingleDayAdapter(eventList, getActivity());
+        adapter = new SingleDayAdapter(getActivity());
         adapter.setOnSingleItemClickListener(new SingleDayAdapter.OnSingleItemClickListener() {
             @Override
             public void onSingleItemClick(int position, Set<Integer> selectedPositions) {
@@ -99,6 +98,7 @@ public class SingleDayFragment extends BaseFragment {
                 }
             }
         });
+
         adapter.notifyDataSetChanged();
         unmarkedRoomsRv.setAdapter(adapter);
         calculateRvPosition();
@@ -110,9 +110,14 @@ public class SingleDayFragment extends BaseFragment {
                 customDialog.show();
             }
         });
+
+        calculateTime();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(todayDateStr);
+
     }
 
     private void calculateTime() {
+        ArrayList<EventInfo> eventInfos = new ArrayList<>();
         for (int i = 0; i < SECONDS_IN_A_DAY; i += THIRTY_MINUTES) {
             minutes = (i / 60) % 60;
             hour = i / (60 * 60);
@@ -126,8 +131,9 @@ public class SingleDayFragment extends BaseFragment {
 //            dates.add(calendar.getTime());
             EventInfo eventInfo = new EventInfo();
             eventInfo.setDateEvent(calendar.getTime());
-            eventList.add(eventInfo);
+            eventInfos.add(eventInfo);
         }
+        adapter.addEventsList(eventInfos);
 
     }
 

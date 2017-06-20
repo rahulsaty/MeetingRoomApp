@@ -45,6 +45,8 @@ public class CustomDialogClass extends Dialog {
     public void addBtnClicked() {
         if (mOnAddBtnClickListener != null) {
             mOnAddBtnClickListener.onAddBtnClick(titleEt.getText().toString(), emailEt.getText().toString());
+            titleEt.setText("");
+            emailEt.setText("");
             dismiss();
         }
     }

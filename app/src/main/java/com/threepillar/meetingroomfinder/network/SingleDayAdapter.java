@@ -18,6 +18,7 @@ import com.threepillar.meetingroomfinder.model.EventInfo;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -33,11 +34,53 @@ public class SingleDayAdapter extends RecyclerView.Adapter<SingleDayAdapter.Sing
 
     private OnSingleItemClickListener onSingleItemClickListener;
 
-    public SingleDayAdapter(/*List<Date> dates*/ ArrayList<EventInfo> eventList, Context context) {
+    public SingleDayAdapter(/*List<Date> dates*/Context context) {
 //        this.dates = dates;
-        this.eventList = eventList;
+        // this.eventList = eventList;
         this.context = context;
     }
+
+    public void addEventsList(ArrayList<EventInfo> eventList) {
+
+        if (this.eventList == null) {
+            this.eventList = new ArrayList();
+        }
+        this.eventList.addAll(eventList);
+        notifyDataSetChanged();
+    }
+
+    public void addEvent(EventInfo eventInfo) {
+
+        if (eventList == null) {
+            this.eventList = new ArrayList();
+        }
+        this.eventList.add(eventInfo);
+        notifyDataSetChanged();
+    }
+
+    public void clearEvents() {
+        if (eventList != null) {
+            eventList.clear();
+        }
+    }
+
+    public void updateEvent(EventInfo eventInfo, int index) {
+
+        if (eventList != null && eventList.size() > 0) {
+            EventInfo listEvent = eventList.get(index);
+            listEvent.setEmailEvent(eventInfo.getEmailEvent());
+            listEvent.setTitleEvent(eventInfo.getTitleEvent());
+            notifyDataSetChanged();
+        }
+    }
+
+    public void updateMultipleEvents(EventInfo eventInfo) {
+
+        for (Integer selectedPosition : selectedPositions) {
+            updateEvent(eventInfo, selectedPosition);
+        }
+    }
+
 
     @Override
     public SingleDayViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -49,36 +92,43 @@ public class SingleDayAdapter extends RecyclerView.Adapter<SingleDayAdapter.Sing
     public void onBindViewHolder(final SingleDayViewHolder holder, final int position) {
 
         if (selectedPositions.contains(position)) {
-            holder.itemView.setBackgroundColor(Color.BLUE);
+            holder.itemView.setBackgroundColor(context.getResources().getColor(R.color.color_ff4200));
         } else {
             holder.itemView.setBackgroundColor(Color.WHITE);
         }
 
+        EventInfo eventInfo = eventList.get(position);
+
 //        holder.timeTv.setText(SingleDayFragment.TIME_FORMAT.format(dates.get(position)));
-        holder.timeTv.setText(SingleDayFragment.TIME_FORMAT.format(eventList.get(position).getDateEvent()));
-        holder.titleTv.setText("");
-        holder.emailTv.setText("");
+        holder.timeTv.setText(SingleDayFragment.TIME_FORMAT.format(eventInfo.getDateEvent()));
+        holder.titleTv.setText(eventInfo.getTitleEvent());
+        holder.emailTv.setText(eventInfo.getEmailEvent());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int currentPosition = holder.getAdapterPosition();
-                int nextPosition = currentPosition + 1;
-                int previousPosition = currentPosition - 1;
+                if (holder.titleTv.getText().toString().equals("") && holder.emailTv.getText().toString().equals("")) {
+                    int currentPosition = holder.getAdapterPosition();
+                    int nextPosition = currentPosition + 1;
+                    int previousPosition = currentPosition - 1;
 
-                if (selectedPositions.contains(currentPosition)) {
-                    selectedPositions.remove(currentPosition);
-                    notifyDataSetChanged();
-                } else if (selectedPositions.contains(nextPosition) || selectedPositions.contains(previousPosition)) {
-                    selectedPositions.add(currentPosition);
-                    notifyDataSetChanged();
+                    if (selectedPositions.contains(currentPosition)) {
+                        selectedPositions.remove(currentPosition);
+                        notifyDataSetChanged();
+                    } else if (selectedPositions.contains(nextPosition) || selectedPositions.contains(previousPosition)) {
+                        selectedPositions.add(currentPosition);
+                        notifyDataSetChanged();
+                    } else {
+                        selectedPositions.clear();
+                        selectedPositions.add(currentPosition);
+                        notifyDataSetChanged();
+                    }
+
+                    if (onSingleItemClickListener != null) {
+                        onSingleItemClickListener.onSingleItemClick(holder.getAdapterPosition(), selectedPositions);
+                    }
                 } else {
-                    selectedPositions.clear();
-                    selectedPositions.add(currentPosition);
-                    notifyDataSetChanged();
-                }
-
-                if (onSingleItemClickListener != null) {
-                    onSingleItemClickListener.onSingleItemClick(holder.getAdapterPosition(), selectedPositions);
+                    Toast.makeText(context, context.getResources().getString(R.string.room_already_booked), Toast.LENGTH_SHORT).show();
+                    holder.itemView.setBackgroundColor(context.getResources().getColor(R.color.color_a5a6a8));
                 }
             }
         });
@@ -94,7 +144,7 @@ public class SingleDayAdapter extends RecyclerView.Adapter<SingleDayAdapter.Sing
 
     @Override
     public int getItemCount() {
-        return eventList.size();
+        return eventList == null ? 0 : eventList.size();
 //        return dates.size();
     }
 
