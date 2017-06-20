@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_200dp"
+        android:background="@color/color_a5a6a8"
+        android:paddingLeft="@dimen/dimen_10dp"
+        android:paddingRight="@dimen/dimen_10dp">
+
+        <EditText
+            android:id="@+id/title_meeting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:hint="@string/meeting_title"
+            android:textSize="@dimen/dimen_20sp" />
+
+        <EditText
+            android:id="@+id/email_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_meeting"
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:hint="@string/email"
+            android:textSize="@dimen/dimen_20sp" />
+
+        <LinearLayout
+            android:id="@+id/add_info_lyt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/email_et"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/add_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_50dp"
+                android:layout_marginRight="@dimen/dimen_50dp"
+                android:layout_weight="1"
+                android:text="@string/add" />
+
+            <Button
+                android:id="@+id/cancel_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_50dp"
+                android:layout_marginRight="@dimen/dimen_50dp"
+                android:layout_weight="1"
+                android:text="@string/cancel" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

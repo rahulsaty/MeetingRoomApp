@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dateTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:gravity="left"
+        android:text="@string/date"
+        android:textSize="@dimen/dimen_20sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_2dp"
+        android:layout_below="@id/dateTv"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:background="@color/color_000000" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/unmarked_rooms_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/dimen_20dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:src="@android:drawable/ic_menu_add" />
+
+</RelativeLayout>
