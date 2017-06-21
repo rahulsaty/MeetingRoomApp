@@ -19,6 +19,7 @@ import com.threepillar.meetingroomfinder.common.util.AppConstants;
 import com.threepillar.meetingroomfinder.common.util.AppPrefrence;
 import com.threepillar.meetingroomfinder.common.util.MakeRequestTask;
 import com.threepillar.meetingroomfinder.common.util.Utils;
+import com.threepillar.meetingroomfinder.enums.FragmentTag;
 import com.threepillar.meetingroomfinder.model.Room;
 
 import java.util.ArrayList;
@@ -111,11 +112,14 @@ public class RoomsFragment extends BaseFragment {
     }
 
     private void savePref(String roomName) {
-        if (!IS_NAMED_ROOM)
+        if (!IS_NAMED_ROOM) {
             roomName = edt_room_name.getText().toString();
+            showFragment(FragmentTag.SingleDayFragment,null,false);
+        }
         if (Utils.isNotNull(roomName)) {
             new AppPrefrence(getActivity()).setRoomName(roomName);
             Toast.makeText(getActivity(), roomName + " saved ", Toast.LENGTH_SHORT).show();
+            showFragment(FragmentTag.SingleDayFragment,null,false);
         } else
             Toast.makeText(getActivity(), " Enter room name first ?", Toast.LENGTH_SHORT).show();
     }
