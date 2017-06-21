@@ -8,11 +8,9 @@ import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
 import android.text.InputFilter;
 import android.text.TextUtils;
 import android.view.ActionMode;
@@ -23,17 +21,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
-import com.threepillar.meetingroomfinder.config.AppConfig;
-
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Utils {
     /***
@@ -314,104 +304,8 @@ public class Utils {
         return isInternetAvailable;
     }
 
-    /*public static boolean isSpaceAllowedHere(String curentCountry, int position) {
-        switch (curentCountry) {
-            case AppConstants.PhoneNoConstant.US:
-                if (position == 3 || position == 7)
-                    return true;
-                break;
-            case AppConstants.PhoneNoConstant.IRE:
-                if (position == 3 || position == 7)
-                    return true;
-                break;
-            case AppConstants.PhoneNoConstant.UK:
-                if (position == 5)
-                    return true;
-                break;
-            case AppConstants.PhoneNoConstant.ROMA:
-                if (position == 4 || position == 8)
-                    return true;
-                break;
-            case AppConstants.PhoneNoConstant.IND:
-                if (position == 2 || position == 6)
-                    return true;
-                break;
-        }
-        return false;
-    }*/
 
 
-    public static boolean isFingerPrintScannerExisted() {
 
-        FingerprintManagerCompat fingerprintManagerCompat = FingerprintManagerCompat.from(AppConfig.getInstance().getContext());
-        return fingerprintManagerCompat.isHardwareDetected();
-
-    }
-
-    public static boolean hasUserEnrolledFingerPrints() {
-
-        FingerprintManagerCompat fingerprintManagerCompat = FingerprintManagerCompat.from(AppConfig.getInstance().getContext());
-        return fingerprintManagerCompat.hasEnrolledFingerprints();
-
-    }
-
-    /**
-     * create image file for
-     *
-     * @return
-     * @throws IOException
-     */
-
-    public static File createImageFile() throws IOException {
-
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = AppConfig.getInstance().getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
-
-        return image;
-    }
-
-
-    /*public static boolean isMarketUS(String currentMarket) {
-        if (isNotNull(currentMarket) && currentMarket.equalsIgnoreCase(AppConstants.COUNTRY_CODE_US))
-            return true;
-        else
-            return false;
-    }*/
-
-    // validating password
-    public static boolean isValidPassword(final String password) {
-        Pattern pattern;
-        Matcher matcher;
-        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{4,}$";
-
-        pattern = Pattern.compile(PASSWORD_PATTERN);
-        matcher = pattern.matcher(password);
-
-        return matcher.matches();
-    }
-
-    // validate minimum number of password digits
-    public static boolean validateMinimumPasswordDigits(String password) {
-        int minLength = 8;
-        if (password != null) {
-            return password.length() >= minLength;
-        }
-        return false;
-    }
-
-    // validate maximum number of password digits
-    public static boolean validateMaximumPasswordDigits(String password) {
-        int maxLength = 35;
-        if (password != null) {
-            return password.length() > maxLength;
-        }
-        return false;
-    }
 }
 
