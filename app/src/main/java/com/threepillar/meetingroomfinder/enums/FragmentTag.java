@@ -26,4 +26,11 @@ public enum FragmentTag {
         this.module = module;
     }
 
+    FragmentTag() {
+    }
+
+
+
+
+
 }
