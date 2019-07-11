@@ -26,8 +26,7 @@ public enum FragmentTag {
         this.module = module;
     }
 
-    FragmentTag() {
-    }
+
 
 
     FragmentTag(String module ,String add) {
