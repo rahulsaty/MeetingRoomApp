@@ -25,6 +25,7 @@ public class AppConstants {
         public static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1003;
         public static final String SAVED_FILE_NAME = "TPG_ROOMS";
         public static final String TEST = "test";
+        public static final String FEATURE1 = "FEATURE1";
 
 
     }
