@@ -21,8 +21,5 @@ public class LogUtil {
         if(DEBUG_MODE)
             Log.e(tag,message);
     }
-    public static void  LOGV(String tag, String message){
-        if(DEBUG_MODE)
-            Log.v(tag,message);
-    }
+
 }
