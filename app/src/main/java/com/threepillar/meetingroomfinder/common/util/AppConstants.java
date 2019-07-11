@@ -26,6 +26,7 @@ public class AppConstants {
         public static final String SAVED_FILE_NAME = "TPG_ROOMS";
         public static final String TEST = "test";
         public static final String FEATURE1 = "FEATURE1";
+        public static final String FEATURE2 = "FEATURE2";
 
 
     }
